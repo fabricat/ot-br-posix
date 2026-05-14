@@ -438,7 +438,8 @@
             });
         };
 
-        $scope.restServerPort = '8081';
+        // Dynamically set restServerPort from OT_REST_LISTEN_PORT environment variable if available
+        $scope.restServerPort = (typeof process !== 'undefined' && process.env && process.env.OT_REST_LISTEN_PORT) ? process.env.OT_REST_LISTEN_PORT : '8081';
         $scope.ipAddr = window.location.hostname + ':' + $scope.restServerPort;
 
         // Basic information line
